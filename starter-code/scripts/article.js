@@ -23,14 +23,23 @@ Article.prototype.toHtml = function() {
   //       - Don't forget to return your template for this article.
   var source = $('#article-template').html();
   var templateRender = Handlebars.compile(source);
+
+
   return templateRender(this);
+
+
+
 };
+
+
 
 ourLocalData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
 });
 
 ourLocalData.forEach(function(ele) {
+  // makeCategoryArray(ele);
+  // makeAuthorArray(ele);
   articles.push(new Article(ele));
 });
 

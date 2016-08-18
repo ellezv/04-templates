@@ -17,7 +17,7 @@
       specify the type!
     - Insert correct placeholder properties based on our Model.
     -->
-    <script id="article-template" type=" ">
+    <script id="article-template" type="text/x-handlebars-template">
       <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
         <header>
           <h1>{{title}}</h1>
@@ -37,6 +37,9 @@
         option element (one for author, one for category), and
         render the list once you have data to populate it with.
        -->
+    <script id="filter-template" type="text/x-handlebars-template">
+      <option value="{{category}}">{{category}}</option>
+    </script>
   </head>
   <body>
     <header class="site-header clearfix">
@@ -71,6 +74,7 @@
                 <option value="">-- Filter by Categories --</option>
               </select>
             </li>
+
           </ul>
         </div>
       </section>
@@ -97,5 +101,7 @@
     <script src="scripts/blogArticles.js"></script>
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
+    <script src="scripts/makefilters.js"></script>
+
   </body>
 </html>
