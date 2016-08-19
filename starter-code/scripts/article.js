@@ -21,7 +21,29 @@ Article.prototype.toHtml = function() {
   //       - Select your template from the DOM.
   //       - Now "compile" your template with Handlebars.
   //       - Don't forget to return your template for this article.
+  var source = $('#article-template').html();
+  var templateRender = Handlebars.compile(source);
+
+
+  return templateRender(this);
+
 };
+
+var categoryArray = [];
+var authorArray = [];
+
+Article.prototype.makeCategoryArray = function(){
+  if ((categoryArray.indexOf(this.category)) === -1) {
+    categoryArray.push(this.category);
+  }
+};
+
+Article.prototype.makeAuthorArray = function(){
+  if ((authorArray.indexOf(this.author)) === -1) {
+    authorArray.push(this.author);
+  }
+};
+
 
 ourLocalData.sort(function(a,b) {
   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
@@ -32,5 +54,7 @@ ourLocalData.forEach(function(ele) {
 });
 
 articles.forEach(function(a){
+  a.makeCategoryArray();
+  a.makeAuthorArray();
   $('#articles').append(a.toHtml());
 });

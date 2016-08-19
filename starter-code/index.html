@@ -17,8 +17,19 @@
       specify the type!
     - Insert correct placeholder properties based on our Model.
     -->
-
-
+    <script id="article-template" type="text/x-handlebars-template">
+      <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
+        <header>
+          <h1>{{title}}</h1>
+          <div class="byline">
+            By <address><a href="{{authorUrl}}">{{author}} </a></address>
+            {{publishStatus}}
+          </div>
+        </header>
+        <section class="article-body"> {{{body}}}</section>
+        <a href="#" class="read-on">Read on &rarr;</a>
+      </article>
+    </script>
     <!--
         STRETCH! Look at all that duplicated code in our
         populateFilters method! Looks like a good opportunity
@@ -26,6 +37,24 @@
         option element (one for author, one for category), and
         render the list once you have data to populate it with.
        -->
+    <script id="filter-template" type="text/x-handlebars-template">
+      <li>
+        <select id="author-filter">
+          <option value="">-- Filter by Authors --</option>
+          {{#each authors}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </li>
+      <li>
+        <select id="category-filter">
+          <option value="">-- Filter by Categories --</option>
+          {{#each categories}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </li>
+    </script>
   </head>
   <body>
     <header class="site-header clearfix">
@@ -50,16 +79,8 @@
       <section id="articles" class="tab-content">
         <div>
           <ul id="filters">
-            <li>
-              <select id="author-filter">
-                <option value="">-- Filter by Authors --</option>
-              </select>
-            </li>
-            <li>
-              <select id="category-filter">
-                <option value="">-- Filter by Categories --</option>
-              </select>
-            </li>
+
+
           </ul>
         </div>
       </section>
@@ -82,8 +103,11 @@
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- TODO: Include Handlebars.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src="scripts/blogArticles.js"></script>
     <script src="scripts/article.js"></script>
     <script src="scripts/articleView.js"></script>
+    <script src="scripts/makefilters.js"></script>
+
   </body>
 </html>
