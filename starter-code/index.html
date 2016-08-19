@@ -38,7 +38,22 @@
         render the list once you have data to populate it with.
        -->
     <script id="filter-template" type="text/x-handlebars-template">
-      <option value="{{category}}">{{category}}</option>
+      <li>
+        <select id="author-filter">
+          <option value="">-- Filter by Authors --</option>
+          {{#each authors}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </li>
+      <li>
+        <select id="category-filter">
+          <option value="">-- Filter by Categories --</option>
+          {{#each categories}}
+          <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </li>
     </script>
   </head>
   <body>
@@ -64,16 +79,7 @@
       <section id="articles" class="tab-content">
         <div>
           <ul id="filters">
-            <li>
-              <select id="author-filter">
-                <option value="">-- Filter by Authors --</option>
-              </select>
-            </li>
-            <li>
-              <select id="category-filter">
-                <option value="">-- Filter by Categories --</option>
-              </select>
-            </li>
+
 
           </ul>
         </div>
