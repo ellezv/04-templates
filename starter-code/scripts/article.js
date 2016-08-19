@@ -27,10 +27,22 @@ Article.prototype.toHtml = function() {
 
   return templateRender(this);
 
-
-
 };
 
+var categoryArray = [];
+var authorArray = [];
+
+Article.prototype.makeCategoryArray = function(){
+  if ((categoryArray.indexOf(this.category)) === -1) {
+    categoryArray.push(this.category);
+  }
+};
+
+Article.prototype.makeAuthorArray = function(){
+  if ((authorArray.indexOf(this.author)) === -1) {
+    authorArray.push(this.author);
+  }
+};
 
 
 ourLocalData.sort(function(a,b) {
@@ -38,11 +50,11 @@ ourLocalData.sort(function(a,b) {
 });
 
 ourLocalData.forEach(function(ele) {
-  // makeCategoryArray(ele);
-  // makeAuthorArray(ele);
   articles.push(new Article(ele));
 });
 
 articles.forEach(function(a){
+  a.makeCategoryArray();
+  a.makeAuthorArray();
   $('#articles').append(a.toHtml());
 });
